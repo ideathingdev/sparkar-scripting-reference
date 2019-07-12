@@ -1,4 +1,5 @@
 **ReactiveModule**
+
 The `ReactiveModule` class exposes methods forReactive programming.
 
 Methods:
@@ -11,7 +12,7 @@ HSVA(h: ScalarSignal, s: ScalarSignal, v: ScalarSignal, a: ScalarS
 Combines four signals andReturns theResult as an `HsvaSignal`. Each value should be in theRange between 0.0 and 1.0.
  
 > **Note**: Hue value is also specified in theRange between 0.0 and 1.0.
-
+#
 **RGBA**
 ```
 RGBA(r: ScalarSignal, g: ScalarSignal, b: ScalarSignal, a: ScalarSignal):RgbaSignal
@@ -20,12 +21,12 @@ RGBA(r: ScalarSignal, g: ScalarSignal, b: ScalarSignal, a: ScalarS
 Combines four signals andReturns theResult as an `RgbaSignal`. Each value should be in theRange between 0.0 and 1.0.
  
 > **Note**:RGB components are interpreted in sRGB space.
-
+#
 **__createSubscription
  _monitorMany**
 
 Internal method called from public monitor api.
-
+#
 **abs**
 
 ```
@@ -35,7 +36,7 @@ abs(x: ScalarSignal): ScalarSignal
 Returns a signal with the value that is the absolute value of the given signal.
 
 **See Also**: `ScalarSignal.abs`
-
+#
 **acos**
 
 ```
@@ -43,7 +44,7 @@ acos(x: ScalarSignal): ScalarSignal
 ```
 
 Returns a signal with the value that is the inverse cosine of the value of the given signal (interpreted asRadians).
-
+#
 **add**
 
 ```
@@ -58,7 +59,7 @@ Returns a signal with the value that is the sum of the v
 > **Note**: `add` and `sum` functions are synonyms, the behavior they provide is equivalent.
 
 **See Also**: `ReactiveModule.sum`, `ScalarSignal.add`, `PointSignal.add`, `VectorSignal.add`
-
+#
 **and**
 
 ```
@@ -68,14 +69,14 @@ and(lhs: BoolSignal,Rhs: BoolSignal): BoolSignal
 Returns a signal with the value that is the logical conjunction of the values of the given signals. It is `true` every time both input signals are `true` and `false` at all other times.
  
 **See Also**: `BoolSignal.and`
-
+#
 **andList**
 ```
 andList(x: Array<BoolSignal>): BoolSignal
 ```
 
 Returns a signal with the value that is the logical and of the values in an array
-
+#
 **antiderivative**
 ```
 antiderivative(signal: ScalarSignal, {min: number, max: number, initialValue: number, overflowBehaviour:ReactiveModule.AntiderivativeOverflowBehaviour}): ScalarSignal
@@ -84,7 +85,7 @@ antiderivative(signal: ScalarSignal, {min: number, max: number, init
 Returns a signal that estimates the anti derivative of the given signal with Respect to time (measured in milliseconds).
  
 > **Note**: Since the antiderivative is inherently unbound the min/max parameters must be provided to prevent overflow. when `overflowBehaviour` is CLAMP the output is clamped at the min/max. When `overflowBehaviour` is WRAP the output is wrapped. This is useful when the outputRepresents something that is cyclic like an angle in this case min might be 0, max might be 2*PI.
-
+#
 **asin**
 
 ```
@@ -92,7 +93,7 @@ asin(x: ScalarSignal): ScalarSignal
 ```
 
 Returns a signal with the value that is the inverse sine of the value of the given signal (interpreted asRadians).
-
+#
 **atan**
 
 ```
@@ -100,7 +101,7 @@ atan(x: ScalarSignal): ScalarSignal
 ```
 
 Returns a signal with the value that is the inverse tangent of the value of the given signal (interpreted asRadians).
-
+#
 **atan2**
 
 ```
@@ -110,7 +111,7 @@ atan2(y: ScalarSignal, x: ScalarSignal): ScalarSignal
 Returns a signal with the value that is the angle inRadians between the x-axis and theRay from (0, 0) to (x, y) where x and y are the values of the specified signals. TheRange is -PI to +PI.
  
 **See Also**: `ScalarSignal.atan2`
-
+#
 **ceil**
 
 ```
@@ -120,7 +121,7 @@ ceil(x: ScalarSignal): ScalarSignal
 Returns a signal with the value that is the smallest integer that is greater than or equal to the value of the given signal.
  
 **See Also**: `ScalarSignal.ceil`
-
+#
 **clamp**
 
 ```
@@ -130,7 +131,7 @@ clamp(x: ScalarSignal, min: ScalarSignal, max: ScalarSignal): Scalar
 Returns a signal with the value that is the value of the given `x` signal constrained to lie between the values of the given `min` and `max` signals.
  
 > **Note**: The behavior is undefined if `min` is greater than `max`.
-
+#
 **concat**
 
 ```
@@ -140,7 +141,7 @@ concat(lhs: StringSignal,Rhs: StringSignal): StringSignal
 Returns a `StringSignal` containing the concatenation of the values specified by the input signals.
  
 **See Also**: `StringSignal.concat`
-
+#
 **cos**
 
 ```
@@ -148,7 +149,7 @@ cos(x: ScalarSignal): ScalarSignal
 ```
 
 Returns a signal with the value that is the cosine of the value of the given signal (interpreted asRadians).
-
+#
 **cross**
 
 ```
@@ -158,7 +159,7 @@ cross(v1: VectorSignal, v2: VectorSignal): VectorSignal
 Returns a vector signal with the value that is the cross product of the given signals.
  
 **See Also**: `VectorSignal.dot`, `ScalarSignal.mul`, `VectorSignal.mul`
-
+#
 **derivative**
 
 ```
@@ -170,15 +171,15 @@ Returns a signal that estimates the derivative of the given 
 > **Note**: the value of the derivative at the initial point of time is always set to zero.
 
 > **Note**: theReturned signal might be noisy for certain types of input signals, especially thoseReceived from the face tracking. It isRecommended to pass the input signal to `expSmooth` first with a damping constant in theRange between 100 and 500.
-
-distance
+#
+**distance**
 
 ```
 distance(v1: PointSignal, v2: PointSignal): ScalarSignal
 ```
 
 Returns the distance from the point to another point as a `ScalarSignal`.
-
+#
 **div**
 
 ```
@@ -188,8 +189,8 @@ div(x: ScalarSignal, y: ScalarSignal): ScalarSignal
 Returns a signal with the value that is the value of the first signal divided by the value of the second signal.
  
 **See Also**: `ScalarSignal.div`
-
-dot
+#
+**dot**
 
 ```
 dot(v1: VectorSignal, v2: VectorSignal): ScalarSignal
@@ -199,7 +200,8 @@ Returns a scalar signal with the value that is the dot pro
  
 **See Also**: `VectorSignal.cross`, `ScalarSignal.mul`, `VectorSignal.mul`
 
-eq
+#
+**eq**
 
 ```
 eq(lhs: ScalarSignal,Rhs: ScalarSignal): BoolSignal
@@ -213,6 +215,7 @@ Returns a Boolean signal that takes the value of `true` ever
 
 **See Also**: `ScalarSignal.eq`, `StringSignal.eq`, `BoolSignal.eq`
 
+#
 **exp**
 
 ```
@@ -221,6 +224,7 @@ exp(x: ScalarSignal): ScalarSignal
 
 Returns a signal with the value that is e (the Euler's constant 2.718...) to the power of the value of the given signal.
 
+#
 **expSmooth**
 
 ```
@@ -236,6 +240,7 @@ Smoothes a variable signal using exponential averaging over time
 
 > **Note**: The smoothed transformation for a signal that specifies aRigid body transformation is guaranteed to be aRigid body transformation.The Rotation component is smoothed in spherical coordinates using Slerp (spherical linear interpolation).
 
+#
 **floor**
 
 ```
@@ -246,14 +251,16 @@ Returns a signal with the value that is the largest integer�
 
 **See Also**: `ScalarSignal.floor`
 
+#
 **fromRange**
 
 ```
 fromRange(x: ScalarSignal, min: ScalarSignal, max: ScalarSignal): ScalarSignal
 ```
 
- Maps x from [min, max]Range to [0.0, 1.0]Range.
+Maps x from [min, max]Range to [0.0, 1.0]Range.
 
+#
 **ge**
 
 ```
@@ -264,6 +271,7 @@ Returns a Boolean signal that takes the value of `true` ever
  
 **See Also**: `ScalarSignal.ge`
 
+#
 **gt**
 
 ```
@@ -274,6 +282,7 @@ Returns a Boolean signal that takes the value of `true` ever
  
 **See Also**: `ScalarSignal.gt`
 
+#
 **le**
 
 ```
@@ -284,6 +293,7 @@ Returns a Boolean signal that takes the value of `true` ever
  
 **See Also**: `ScalarSignal.le`
 
+#
 **log**
 
 ```
@@ -292,6 +302,7 @@ log(x: ScalarSignal): ScalarSignal
 
 Returns a signal with the value that is the natural logarithm of the value of the given signal.
 
+#
 **lt**
 
 ```
@@ -302,6 +313,7 @@ Returns a Boolean signal that takes the value of `true` ever
  
 **See Also**: `ScalarSignal.lt`
 
+#
 **magnitude**
 
 ```
@@ -310,7 +322,7 @@ magnitude(v: VectorSignal): ScalarSignal
 
 Returns the magnitude of the vector as a `ScalarSignal`.
 
-
+#
 **max**
 
 ```
@@ -319,6 +331,7 @@ max(x: ScalarSignal, y: ScalarSignal): ScalarSignal
 
 Returns a signal with the value that is the greater of the values of the given signals.
 
+#
 **min**
 
 ```
@@ -327,6 +340,7 @@ min(x: ScalarSignal, y: ScalarSignal): ScalarSignal
 
 Returns a signal with the value that is the lesser of the values of the given signals.
 
+#
 **mix**
 
 ```
@@ -337,6 +351,7 @@ mix(x: TransformSignal, y: TransformSignal, alpha: ScalarSignal): Tr
 ```
 Returns a signal with the value that is the interpolation of the values of the given signals.
 
+#
 **mod**
 
 ```
@@ -347,6 +362,7 @@ Returns a signal with the value that is the floating-pointRema
  
 **See Also**: `ScalarSignal.mod`
 
+#
 **monitorMany**
 
 
@@ -367,7 +383,7 @@ where `oldValues` and `newValues` are the JSON objects where k
 
 **See Also**: `ReactiveModule.monitor`
 
-
+#
 **mul**
 
 ```
@@ -381,6 +397,7 @@ Returns a signal with the value that is the product of the
  
 **See Also**: `ScalarSignal.mul`, `VectorSignal.mul`
 
+#
 **mulList**
 
 ```
@@ -389,6 +406,7 @@ mulList(x: Array<number>): ScalarSignal
 
 Returns a signal with the value that is the product of the values in an array
 
+#
 **ne**
 
 ```
@@ -403,6 +421,7 @@ Returns a Boolean signal that takes the value of `true` ever
 
 **See Also**: `ScalarSignal.ne`, `StringSignal.ne`, `BoolSignal.ne`
 
+#
 **neg**
 
 ```
@@ -414,6 +433,7 @@ Returns a signal with the negated value of the given signal.
  
 **See Also**: `ScalarSignal.neg`, `VectorSignal.neg`
 
+#
 **normalize**
 
 ```
@@ -423,6 +443,7 @@ normalize(): VectorSignal
 
 Returns the normalized (unit) vector in the direction of the original vector as a `VectorSignal`.
 
+#
 **not**
 
 ```
@@ -433,6 +454,7 @@ Returns a signal with the logically negated value of the giv
  
 **See Also**: `BoolSignal.not`
 
+#
 **once**
 
 ```
@@ -441,6 +463,7 @@ once(): EventSource
 
 Returns an `EventSource` that emits exactly one empty event as soon as possible.
 
+#
 **or**
 
 ```
@@ -451,6 +474,7 @@ Returns a signal with the value that is the logical disjunct
  
 **See Also**: `BoolSignal.or`
 
+#
 **orList**
 
 ```
@@ -459,6 +483,7 @@ orList(x: Array<BoolSignal>): BoolSignal
 
 Returns a signal with the value that is the logical or of the values in an array
 
+#
 **pack2**
 
 ```
@@ -472,6 +497,7 @@ pack2(x: Point2DSignal, y: Point2DSignal): Point4DSignal
 
 Packs two Scalar or Point signals into a bigger Point signal.
 
+#
 **pack3**
 
 ```
@@ -483,6 +509,7 @@ pack3(x: Point2DSignal, y: ScalarSignal, z: ScalarSignal): Point4DSi
 
 Packs three Scalar or Point signals into a bigger Point signal.
 
+#
 **pack4**
 
 ```
@@ -491,6 +518,7 @@ pack4(x: ScalarSignal, y: ScalarSignal, z: ScalarSignal, w: Scalar
 
 Packs four `ScalarSignals` into a `Point4DSignal`.
 
+#
 **point**
 
 ```
@@ -499,6 +527,7 @@ point(x: ScalarSignal, y: ScalarSignal, z: ScalarSignal): PointSigna
 
 Combines three signals andReturns theResult as a `PointSignal`.
 
+#
 **point2d**
 
 ```
@@ -507,6 +536,7 @@ point2d(x: ScalarSignal, y: ScalarSignal): PixelPointSignal
 
 Combines two signals andReturns theResult as a `PixelPointSignal`.
 
+#
 **pow**
 
 ```
@@ -519,6 +549,7 @@ TheResult is undefined if the base is negative, or if the 
  
 **See Also**: `ScalarSignal.pow`
 
+#
 **reflect**
 
 ```
@@ -528,6 +559,7 @@ Reflect(normal: VectorSignal): VectorSignal
 
  Calculates theReflection direction for an incident vector and a normal as a `VectorSignal`.
 
+#
 **rotation**
 
 ```
@@ -536,6 +568,7 @@ rotation(w: number, x: number, y: number, z: number):Rotation
 
 Creates 'Rotation' from quaternion components.
 
+#
 **round**
 
 ```
@@ -548,14 +581,16 @@ Returns a signal with the value that is theRounded value of�
 
 **See Also**: `ScalarSignal.round`
 
+#
 **scale**
 
 ```
 scale(x: ScalarSignal, y: ScalarSignal, z: ScalarSignal): ScaleSignal
 ```
 
- Combines three signals andReturns theResult as a `ScaleSignal`.
+Combines three signals andReturns theResult as a `ScaleSignal`.
 
+#
 **schmittTrigger**
 
 ```
@@ -567,6 +602,7 @@ For input values between and including the thresholds, the Shm
  
 > **Note**: The initialValue is assumed to be `false` if it isn't specified.
 
+#
 **sign**
 
 ```
@@ -579,6 +615,7 @@ Returns a signal with the value that is the sign of the 
 
 **See Also**: `ScalarSignal.sign`
 
+#
 **sin**
 
 ```
@@ -587,6 +624,7 @@ sin(x: ScalarSignal): ScalarSignal
 
 Returns a signal with the value that is the sine of the value of the given signal (interpreted asRadians).
 
+#
 **smoothStep**
 
 ```
@@ -596,6 +634,7 @@ smoothStep(x: ScalarSignal, edge0: ScalarSignal, edge1: ScalarSignal):
 Returns 0.0 if x is less than edge0, and 1.0 if x is greater than edge1.
 If x is between edge0 and edge1, smooth Hermite interpolation is performed.
 
+#
 **sqrt**
 
 ```
@@ -606,6 +645,7 @@ Returns a signal with the value that is the squareRoot of 
  
 **See Also**: `ScalarSignal.sqrt`
 
+#
 **step**
 
 ```
@@ -614,6 +654,7 @@ step(x: ScalarSignal, edge: ScalarSignal): ScalarSignal
 
 Returns 0.0 if x is less than edge, and 1.0 isReturned otherwise.
 
+#
 **sub**
 
 ```
@@ -627,6 +668,7 @@ Returns a signal with the value that is the difference of 
  
 **See Also**: `ScalarSignal.sub`, `VectorSignal.sub`, `PointSignal.sub`
 
+#
 **sum**
 
 ```
@@ -642,6 +684,7 @@ Returns a signal with the value that is the sum of the v
 
 **See Also**: `ReactiveModule.sum`, `ScalarSignal.add`, `PointSignal.add`, `VectorSignal.add`
 
+#
 **sumList**
 
 ```
@@ -650,6 +693,7 @@ sumList(x: Array<number>): ScalarSignal
 
 Returns a signal with the value that is the sum of the values in an array
 
+#
 **tan**
 
 ```
@@ -658,6 +702,7 @@ tan(x: ScalarSignal): ScalarSignal
 
 Returns a signal with the value that is the tangent of the value of the given signal (interpreted asRadians).
 
+#
 **toRange**
 
 ```
@@ -666,6 +711,7 @@ toRange(x: ScalarSignal, min: ScalarSignal, max: ScalarSignal): Scal
 
 Maps x from [0.0, 1.0]Range to [min, max]Range.
 
+#
 **val**
 
 ```
@@ -678,6 +724,7 @@ Returns a signal that has a constant value which is specifie
  
 > **Note**: Primitive types are implicitly converted to constant signals when passed as function or property-setter arguments, therefore using `val` in such scenarios is notRequired.
 
+#
 **vector**
 
 ```
@@ -685,7 +732,8 @@ vector(x: ScalarSignal, y: ScalarSignal, z: ScalarSignal): VectorSig
 ```
 
 Combines three signals andReturns theResult as a `VectorSignal`.
- 
+
+#
 **xor**
 ```
 xor(lhs: BoolSignal,Rhs: BoolSignal): BoolSignal
@@ -697,6 +745,7 @@ Returns a signal with the value that is the logical exclusiv
 
 **See Also**: `BoolSignal.xor`
 
+#
 **xorList**
 ```
 xorList(x: Array<BoolSignal>): BoolSignal
